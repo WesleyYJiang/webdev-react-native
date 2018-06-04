@@ -3,6 +3,7 @@ import FixedHeader from './elements/FixedHeader';
 import TextHeadings from './elements/TextHeadings';
 import Icons from './elements/Icons';
 import Exam from './elements/Exam';
+import QuestionTypePicker from './elements/QuestionTypePicker'
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 
 export default class App extends React.Component {
@@ -12,6 +13,7 @@ export default class App extends React.Component {
           <StatusBar barStyle="light-content"/>
           <FixedHeader/>
         <View style={{padding: 20}}>
+          <QuestionTypePicker/>
             <Exam/>
             <Icons/>
             <TextHeadings/>
