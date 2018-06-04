@@ -4,12 +4,12 @@ import TextHeadings from './elements/TextHeadings';
 import Icons from './elements/Icons';
 import Exam from './elements/Exam';
 import QuestionTypePicker from './elements/QuestionTypePicker'
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View >
+      <ScrollView >
           <StatusBar barStyle="light-content"/>
           <FixedHeader/>
         <View style={{padding: 20}}>
@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
 
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
