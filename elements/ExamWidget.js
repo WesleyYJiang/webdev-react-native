@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {ListItem, Text} from 'react-native-elements';
-import {View} from 'react-native';
+import {ListItem, Text, Button} from 'react-native-elements';
+import {ScrollView, View} from 'react-native';
 
 const quesations = [
     {	title: 'Question 1', subtitle: 'Multiple choice',
@@ -13,11 +13,11 @@ const quesations = [
         icon: 'subject'}];
 
 
-class Exam extends Component {
+class ExamWidget extends Component {
 
     render() {
         return(
-            <View style={{padding: 15}}>
+            <ScrollView style={{padding: 15}}>
                 <Text h2>Lists</Text>
                 {quesations.map((question, index) => (
                     <ListItem
@@ -26,13 +26,12 @@ class Exam extends Component {
                         subtitle={question.subtitle}
                         leftIcon={{name: question.icon}}/>
                 ))}
+                <Button title="Add Question" onPress={() => this.props.navigation.navigate('ScreenA') } />
 
-
-
-            </View>
+            </ScrollView>
             )
     }
 
 }
 
-export default Exam;
+export default ExamWidget;

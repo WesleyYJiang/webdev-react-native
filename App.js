@@ -2,7 +2,7 @@ import React from 'react';
 import FixedHeader from './elements/FixedHeader';
 import TextHeadings from './elements/TextHeadings';
 import Icons from './elements/Icons';
-import Exam from './elements/Exam';
+import ExamWidget from './elements/ExamWidget';
 import QuestionTypePicker from './elements/QuestionTypePicker'
 import {Button, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
@@ -10,6 +10,10 @@ import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor';
 import CourseList from './components/CourseList';
 import ModuleList from './components/ModuleList';
 import LessonList from './components/LessonList';
+import WidgetList from "./components/WidgetList";
+import QuestionList from "./components/QuestionList";
+import MultipleChoiceQuestionEditor from "./elements/MultipleChoiceQuestionEditor";
+import AssignmentWidget from "./components/AssignmentWidget";
 
 
 
@@ -23,7 +27,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <ScrollView >
+      <ScrollView>
           <StatusBar barStyle="light-content"/>
           <Button title="Courses" onPress={() => this.props.navigation.navigate('CourseList') } />
           {/*<FixedHeader/>*/}
@@ -36,13 +40,15 @@ class Home extends React.Component {
                       {/*.navigate('ScreenB') } />*/}
 
           {/*<TrueFalseQuestionEditor/>*/}
+          <ExamWidget/>
 
-        {/*<View style={{padding: 20}}>*/}
+        <View style={{padding: 20}}>
           {/*<QuestionTypePicker/>*/}
-            {/*<Exam/>*/}
             {/*<Icons/>*/}
             {/*<TextHeadings/>*/}
-        {/*</View>*/}
+        </View>
+
+      <AssignmentWidget/>
       </ScrollView>
     );
   }
@@ -75,7 +81,14 @@ const App = createStackNavigator({
     CourseList,
     ModuleList,
     LessonList,
-    ScreenA
+    WidgetList,
+    QuestionList,
+    TrueFalseQuestionEditor,
+    MultipleChoiceQuestionEditor,
+    AssignmentWidget,
+    ExamWidget,
+    ScreenA,
+    ScreenB
 });
 
 
