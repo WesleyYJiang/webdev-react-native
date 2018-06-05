@@ -4,32 +4,88 @@ import TextHeadings from './elements/TextHeadings';
 import Icons from './elements/Icons';
 import Exam from './elements/Exam';
 import QuestionTypePicker from './elements/QuestionTypePicker'
-import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Button, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor';
+import CourseList from './components/CourseList';
+import ModuleList from './components/ModuleList';
+import LessonList from './components/LessonList';
 
-export default class App extends React.Component {
+
+
+class Home extends React.Component {
+    static navigationOptions = {
+        title: 'Home'
+    };
+    constructor(props) {
+        super(props)
+    }
+
   render() {
     return (
       <ScrollView >
           <StatusBar barStyle="light-content"/>
-          <FixedHeader/>
-        <View style={{padding: 20}}>
-          <QuestionTypePicker/>
-            <Exam/>
-            <Icons/>
-            <TextHeadings/>
+          <Button title="Courses" onPress={() => this.props.navigation.navigate('CourseList') } />
+          {/*<FixedHeader/>*/}
 
+          {/*<Button title="Go to Screen A"*/}
+                  {/*onPress={() => this.props.navigation*/}
+                      {/*.navigate('ScreenA') } />*/}
+          {/*<Button title="Go to Screen B"*/}
+                  {/*onPress={() => this.props.navigation*/}
+                      {/*.navigate('ScreenB') } />*/}
 
-        </View>
+          {/*<TrueFalseQuestionEditor/>*/}
+
+        {/*<View style={{padding: 20}}>*/}
+          {/*<QuestionTypePicker/>*/}
+            {/*<Exam/>*/}
+            {/*<Icons/>*/}
+            {/*<TextHeadings/>*/}
+        {/*</View>*/}
       </ScrollView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+class ScreenA extends React.Component {
+    static navigationOptions = {title: "Screen A"}
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return (
+            <View>
+                <Text h1>Screen A</Text>
+                <Button title="Go Home"
+                        onPress={() =>this.props.navigation.goBack()} />
+            </View>
+        )
+    }
+}
+
+const ScreenB = () => (
+    <View>
+        <Text h1>Screen B</Text>
+    </View>
+);
+
+const App = createStackNavigator({
+    Home,
+    CourseList,
+    ModuleList,
+    LessonList,
+    ScreenA
 });
+
+
+export default App;
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
