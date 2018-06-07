@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import {ButtonGroup} from 'react-native-elements'
+import TrueFalseQuestionWidget from "./TrueFalseQuestionWidget";
+import {ScrollView, View} from "react-native";
+
+
 
 class QuestionTypeButtonGroupChooser extends Component {
     constructor(props) {
@@ -22,11 +26,15 @@ class QuestionTypeButtonGroupChooser extends Component {
             'Essay',
             'True or\nfalse'];
         return(
-            <ButtonGroup
-                onPress={this.selectQuestionType()}
-                selectedIndex={this.state.selectedQuestionTypeIndex}
-                buttons={questionTypes}
-                containerStyle={{height: 75}}/>
+            <ScrollView>
+                <ButtonGroup
+                    onPress={() => this.selectQuestionType()}
+                    selectedIndex={this.state.selectedQuestionTypeIndex}
+                    buttons={questionTypes}
+                    containerStyle={{height: 75}}/>
+                {this.state.selectedQuestionTypeIndex==='True or\nfalse' && <TrueFalseQuestionWidget/>}
+            </ScrollView>
+
         )
     }
 }

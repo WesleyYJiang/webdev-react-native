@@ -3,15 +3,21 @@ import {ListItem, Text, Button, FormLabel, FormInput, FormValidationMessage} fro
 import {ScrollView, View, TextInput} from 'react-native';
 
 class AssignmentWidget extends Component {
-    static navigationOptions = {title: 'AssignmentWidget'};
+    static navigationOptions = {title: 'Assignment'};
 
     constructor(props) {
         super(props);
-        this.state = {title: 'Title', description: 'Descriptions', points: 0, answer: '', link: ''}
+        this.state = {title: 'Title', description: 'Descriptions', points: 0, answer: '', link: '', lessonId: 0}
     }
 
     updateForm(newState) {
-        this.setState(newState)
+        this.setState(newState);
+    }
+
+    componentDidMount() {
+        const {navigation} = this.props;
+        const lessonId = navigation.getParam("lessonId");
+        this.setState({lessonId: lessonId});
     }
 
     render() {
@@ -32,7 +38,6 @@ class AssignmentWidget extends Component {
                 <View  style={{padding: 15}}>
                     <Text h2>Preview</Text>
                     <View style={{flexDirection: 'row'}}>
-
                         <Text h3>{this.state.title}</Text>
                         <View style={{position: 'absolute', right: 0}}>
                             <Text h3>{this.state.points}</Text>
@@ -52,21 +57,15 @@ class AssignmentWidget extends Component {
 
                 <View  style={{padding: 15}}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Button	backgroundColor="#FF0000" color="white" title="Cancel"/>
+                        <Button	backgroundColor="#FF0000" color="white" title="Cancel"
+                                   onPress={() => this.props.navigation.navigate('Widgets', {lessonId: this.state.lessonId}) }/>
                         <Button	backgroundColor="#1E90FF" color="white" title="Submit"/>
                     </View>
                 </View>
 
-                {/*<CheckBox onPress={() => this.updateForm({isTrue: !this.state.isTrue})}*/}
-                          {/*checked={this.state.isTrue} title='The answer is true'/>*/}
-
-
-
-
-
-
-
-                <Button title="Add Assignment" backgroundColor="green" onPress={() => this.props.navigation.navigate('ScreenA') } />
+                <Button title="Add Assignment"
+                        backgroundColor="green"
+                        onPress={() => this.props.navigation.navigate('ScreenA') } />
 
             </ScrollView>
         )

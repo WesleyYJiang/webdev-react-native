@@ -1,20 +1,18 @@
 import React from 'react';
-import FixedHeader from './elements/FixedHeader';
-import TextHeadings from './elements/TextHeadings';
-import Icons from './elements/Icons';
 import ExamWidget from './elements/ExamWidget';
-import QuestionTypePicker from './elements/QuestionTypePicker'
+import QuestionEditor from './elements/QuestionEditor'
 import {Button, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor';
+import TrueFalseQuestionWidget from './elements/TrueFalseQuestionWidget';
 import CourseList from './components/CourseList';
 import ModuleList from './components/ModuleList';
 import LessonList from './components/LessonList';
 import WidgetList from "./components/WidgetList";
 import QuestionList from "./components/QuestionList";
-import MultipleChoiceQuestionEditor from "./elements/MultipleChoiceQuestionEditor";
+import MultipleChoiceQuestionWidget from "./elements/MultipleChoiceQuestionWidget";
 import AssignmentWidget from "./components/AssignmentWidget";
-
+import EssayQuestionWidget from "./elements/EssayQuestionWidget";
+import FillInTheBlanksQuestionWidget from "./elements/FillInTheBlanksQuestionWidget";
 
 
 class Home extends React.Component {
@@ -30,51 +28,11 @@ class Home extends React.Component {
       <ScrollView>
           <StatusBar barStyle="light-content"/>
           <Button title="Courses" onPress={() => this.props.navigation.navigate('CourseList') } />
-          {/*<FixedHeader/>*/}
-
-          {/*<Button title="Go to Screen A"*/}
-                  {/*onPress={() => this.props.navigation*/}
-                      {/*.navigate('ScreenA') } />*/}
-          {/*<Button title="Go to Screen B"*/}
-                  {/*onPress={() => this.props.navigation*/}
-                      {/*.navigate('ScreenB') } />*/}
-
-          {/*<TrueFalseQuestionEditor/>*/}
-          <ExamWidget/>
-
-        <View style={{padding: 20}}>
-          {/*<QuestionTypePicker/>*/}
-            {/*<Icons/>*/}
-            {/*<TextHeadings/>*/}
-        </View>
-
-      <AssignmentWidget/>
       </ScrollView>
     );
   }
 }
 
-class ScreenA extends React.Component {
-    static navigationOptions = {title: "Screen A"}
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return (
-            <View>
-                <Text h1>Screen A</Text>
-                <Button title="Go Home"
-                        onPress={() =>this.props.navigation.goBack()} />
-            </View>
-        )
-    }
-}
-
-const ScreenB = () => (
-    <View>
-        <Text h1>Screen B</Text>
-    </View>
-);
 
 const App = createStackNavigator({
     Home,
@@ -83,12 +41,13 @@ const App = createStackNavigator({
     LessonList,
     WidgetList,
     QuestionList,
-    TrueFalseQuestionEditor,
-    MultipleChoiceQuestionEditor,
+    TrueFalseQuestionWidget,
+    MultipleChoiceQuestionWidget,
     AssignmentWidget,
     ExamWidget,
-    ScreenA,
-    ScreenB
+    QuestionEditor,
+    EssayQuestionWidget,
+    FillInTheBlanksQuestionWidget
 });
 
 

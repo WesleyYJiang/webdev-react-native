@@ -5,7 +5,7 @@ import {Text, ListItem} from 'react-native-elements'
 class QuestionList extends Component {
     static navigationOptions = {title: 'Questions'}
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             questions: [],
             examId: 1
@@ -13,7 +13,7 @@ class QuestionList extends Component {
     }
     componentDidMount() {
         const {navigation} = this.props;
-        const examId = navigation.getParam("examId")
+        const examId = navigation.getParam("examId");
         fetch("http://localhost:8080/api/exam/"+examId+"/question")
             .then(response => (response.json()))
             .then(questions => this.setState({questions}))
@@ -27,10 +27,10 @@ class QuestionList extends Component {
                             onPress={() => {
                                 if(question.type === "TrueFalse")
                                     this.props.navigation
-                                        .navigate("TrueFalseQuestionEditor", {questionId: question.id})
+                                        .navigate("TrueFalseQuestionWidget", {questionId: question.id})
                                 if(question.type === "MultipleChoice")
                                     this.props.navigation
-                                        .navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
+                                        .navigate("MultipleChoiceQuestionWidget", {questionId: question.id})
                             }}
                             key={index}
                             subtitle={question.description}
@@ -39,4 +39,4 @@ class QuestionList extends Component {
         )
     }
 }
-export default QuestionList
+export default QuestionList;

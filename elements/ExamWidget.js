@@ -13,7 +13,9 @@ const quesations = [
         icon: 'subject'}];
 
 
+
 class ExamWidget extends Component {
+    static navigationOptions = {title: 'ExamWidget'};
 
     render() {
         return(
@@ -26,7 +28,8 @@ class ExamWidget extends Component {
                         subtitle={question.subtitle}
                         leftIcon={{name: question.icon}}/>
                 ))}
-                <Button title="Add Question" onPress={() => this.props.navigation.navigate('ScreenA') } />
+                <Button title="Add Question" onPress={() => this.props.navigation.navigate('QuestionEditor') } />
+                <Button title="Save Exam" onPress={() => this.props.navigation.navigate('QuestionEditor') } />
 
             </ScrollView>
             )
